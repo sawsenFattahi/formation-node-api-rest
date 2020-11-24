@@ -1,17 +1,30 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 import routes from './src/routes';
-import db from './src/infrastructur'
+import db from './src/models';
 
 dotenv.config();
+
 const app = express();
-const port = process.env.PORT || 4000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 4000; 
 routes(app);
-app.listen(port, () => {
-    console.log("hello from: ", port);
-    db.initialize();
+app.listen(PORT, () => {
+    console.log("hello from: ", PORT);
+    console.log('db.url', db.url)
+    db.mongoose
+  .connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log("Connected to the database!");
+  })
+  .catch(err => {
+    console.log("Cannot connect to the database!", err);
+    process.exit();
+  });
 });
 

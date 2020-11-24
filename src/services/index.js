@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
-import { user } from '../models/user';
-
-export const 
+import addUserService from './addUserService';
+import getUsersService from './getUsersService';
+export { addUserService, getUsersService };

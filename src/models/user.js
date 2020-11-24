@@ -19,11 +19,9 @@ const UserSchema = schema({
         required: 'password is required'
     },
     userStatus: {
-        type: [{
-            Number,
-            enum:[1, 2, 3, 4],
-        }],
-        default:[1]
+        type: Number,
+        enum:[1, 2, 3, 4],
+        default:1
     },
     userAvatar: {
         type: String,

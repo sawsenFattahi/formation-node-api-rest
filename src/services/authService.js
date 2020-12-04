@@ -1,12 +1,10 @@
 import db from '../models';
 
-const getUsersSevice = () => {
+const getUsersSevice = (userLogin) => {
   const user = db.User;
-  const response = user
-    .find()
-    .then((list) => ({ list, status: 200 }))
+  const response = user.findOne({ userLogin })
+    .then((item) => ({ user: item, status: 200 }))
     .catch((err) => ({ err, status: 500 }));
-
   return response;
 };
 

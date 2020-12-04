@@ -1,6 +1,9 @@
-import user from './user'
+import addUser from './addUser';
 import getUsers from './getUsers';
 import deleteUser from './deleteUser';
 import updateUser from './updateUser';
+import authentificat from './authentificat';
 
-export { user, getUsers, deleteUser, updateUser }
+export {
+  addUser, getUsers, deleteUser, updateUser, authentificat,
+};
